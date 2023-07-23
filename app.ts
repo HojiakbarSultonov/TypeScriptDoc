@@ -76,50 +76,112 @@
 
 // tuples
 
-let f: [number, string];
-let g: [number, [number, string]];
+// let f: [number, string];
+// let g: [number, [number, string]];
 
-f = [2, "str"];
-g = [4, [2, "str"]];
-
+// f = [2, "str"];
+// g = [4, [2, "str"]];
 
 // ===============================
 
-
 //Enum  --- Qayta hisoblash
 
-enum Gender {
-    Male,
-    Female
+// enum Gender {
+//     Male,
+//     Female
+// }
+
+// console.log(Gender.Female, Gender.Male); // Bu 0 ga va 1ga teng
+
+// enum G {
+//     A,
+//     B=10,
+//     C,
+// }
+
+// console.log(G.A, G.B, G.C); /// G.A == 0, G.B ==10, G.C == 11 ga teng boladi
+
+// enum D {
+//     A,
+//     A2,
+//     B=10,
+//     C,
+// }
+
+// console.log(D.A, D.A2, D.B, D.C); /// D.A == 0, D.A2 == 1, D.B ==10, D.C == 11 ga teng boladi
+
+// enum H {
+//     A = "Hello",
+//     B= "TypeScript"
+// }
+
+// console.log(H.A, H.B);
+
+// ==================================
+
+//Class
+
+class Person {
+  _name: string = "Hojiakbar";
+  _age: number = 23;
+
+  //constructor faqat 1marta foydalaniladi!!!
+
+  constructor(name: string, age: number) {
+    this._name = name;
+    this._age = age;
+  }
+
+  //method
+  // info():string {
+  //     return `${this._name} - ${this._age}da `
+  // }
+
+  //2-methodga parametr berish
+
+  info(value: number): string {
+    return `${this._name} - ${this._age + value}da `;
+  }
+
+  // static bu classga yani Person orqali ishlatilinadi. Masalan: Person.isFlaying
+
+  static isFlaying = false;
+  static description() {
+    return "Bu class Person haqida";
+  }
+
+  // getter va setter methodi
+
+  get name(): string {
+    return this._name;
+  }
+
+  set name(value: string) {
+    this._name = value;
+  }
+
+  get age(): number {
+    return this._age;
+  }
+
+  set age(value: number) {
+    if (value > 0 && value < 100) {
+      this._age = value;
+    }else throw new Error('Siz notori yosh kiritdingiz')
+  }
 }
 
-console.log(Gender.Female, Gender.Male); // Bu 0 ga va 1ga teng
+const Hojiakbar: Person = new Person("Hojiakbar", 27);
+const Rasul: Person = new Person("Rasul", 57);
 
-enum G {
-    A,
-    B=10,
-    C,
+// console.log(Hojiakbar.info(2)); //2chi methodni ishlatish
+// console.log(Rasul);
+// console.log(Person.description());
+
+if(Hojiakbar instanceof Person){
+    console.log('tegishli');
+    
+}else {
+    console.log('tegishli emas');
+    
 }
-
-
-console.log(G.A, G.B, G.C); /// G.A == 0, G.B ==10, G.C == 11 ga teng boladi
-
-
-enum D {
-    A,
-    A2,
-    B=10,
-    C,
-}
-
-
-console.log(D.A, D.A2, D.B, D.C); /// D.A == 0, D.A2 == 1, D.B ==10, D.C == 11 ga teng boladi
-
-
-enum H {
-    A = "Hello",
-    B= "TypeScript"
-}
-
-console.log(H.A, H.B);
-

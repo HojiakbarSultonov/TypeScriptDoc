@@ -50,30 +50,87 @@
 // let c : Array<number> = []
 // =====================
 // tuples
-var f;
-var g;
-f = [2, "str"];
-g = [4, [2, "str"]];
+// let f: [number, string];
+// let g: [number, [number, string]];
+// f = [2, "str"];
+// g = [4, [2, "str"]];
 // ===============================
 //Enum  --- Qayta hisoblash
-var Gender;
-(function (Gender) {
-    Gender[Gender["Male"] = 0] = "Male";
-    Gender[Gender["Female"] = 1] = "Female";
-})(Gender || (Gender = {}));
-console.log(Gender.Female, Gender.Male); // Bu 0 ga va 1ga teng
-var G;
-(function (G) {
-    G[G["A"] = 0] = "A";
-    G[G["B"] = 10] = "B";
-    G[G["C"] = 11] = "C";
-})(G || (G = {}));
-console.log(G.A, G.B, G.C); /// G.A == 0, G.B ==10, G.C == 11 ga teng boladi
-var D;
-(function (D) {
-    D[D["A"] = 0] = "A";
-    D[D["A2"] = 1] = "A2";
-    D[D["B"] = 10] = "B";
-    D[D["C"] = 11] = "C";
-})(D || (D = {}));
-console.log(D.A, D.A2, D.B, D.C); /// D.A == 0, D.A2 == 1, D.B ==10, D.C == 11 ga teng boladi
+// enum Gender {
+//     Male,
+//     Female
+// }
+// console.log(Gender.Female, Gender.Male); // Bu 0 ga va 1ga teng
+// enum G {
+//     A,
+//     B=10,
+//     C,
+// }
+// console.log(G.A, G.B, G.C); /// G.A == 0, G.B ==10, G.C == 11 ga teng boladi
+// enum D {
+//     A,
+//     A2,
+//     B=10,
+//     C,
+// }
+// console.log(D.A, D.A2, D.B, D.C); /// D.A == 0, D.A2 == 1, D.B ==10, D.C == 11 ga teng boladi
+// enum H {
+//     A = "Hello",
+//     B= "TypeScript"
+// }
+// console.log(H.A, H.B);
+// ==================================
+//Class
+var Person = /** @class */ (function () {
+    //constructor faqat 1marta foydalaniladi!!!
+    function Person(name, age) {
+        this._name = "Hojiakbar";
+        this._age = 23;
+        this._name = name;
+        this._age = age;
+    }
+    //method
+    // info():string {
+    //     return `${this._name} - ${this._age}da `
+    // }
+    //2-methodga parametr berish
+    Person.prototype.info = function (value) {
+        return "".concat(this._name, " - ").concat(this._age + value, "da ");
+    };
+    Person.description = function () {
+        return "Bu class Person haqida";
+    };
+    Object.defineProperty(Person.prototype, "name", {
+        // getter va setter methodi
+        get: function () {
+            return this._name;
+        },
+        set: function (value) {
+            this._name = value;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Person.prototype, "age", {
+        get: function () {
+            return this._age;
+        },
+        set: function (value) {
+            if (value > 0 && value < 100) {
+                this._age = value;
+            }
+            else
+                throw new Error('Siz notori yosh kiritdingiz');
+        },
+        enumerable: false,
+        configurable: true
+    });
+    // static bu classga yani Person orqali ishlatilinadi. Masalan: Person.isFlaying
+    Person.isFlaying = false;
+    return Person;
+}());
+var Hojiakbar = new Person("Hojiakbar", 27);
+var Rasul = new Person("Rasul", 57);
+console.log(Hojiakbar.info(2)); //2chi methodni ishlatish
+console.log(Rasul);
+console.log(Person.description());
