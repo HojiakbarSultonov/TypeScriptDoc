@@ -1,15 +1,15 @@
 // data types==============
 
-let a: number = 12;
-let b: string = "text";
-let c: boolean = true;
-let d: null = null;
-let e: undefined = undefined;
-let f: { name: string } = { name: "Hojiakbar" };
-f.name;
+// let a: number = 12;
+// let b: string = "text";
+// let c: boolean = true;
+// let d: null = null;
+// let e: undefined = undefined;
+// let f: { name: string } = { name: "Hojiakbar" };
+// f.name;
 
-let g: any; // any istalgan typeni oladi, lekin bu typeni ishlatish tavsiya qilinmaydi!!!
-g = 12;
+// let g: any; // any istalgan typeni oladi, lekin bu typeni ishlatish tavsiya qilinmaydi!!!
+// g = 12;
 
 // ==================================================================================
 
@@ -63,5 +63,63 @@ g = 12;
 // let s2: Sizes = "LG";
 //=================================================
 
+// Arrays, tuples & enum ===============
 
-// Arrays, tuples & enum
+// let a = [];
+// a = [12, "str", true, undefined, {}]
+
+// let b = [1,2,3,4]
+
+// let b:number[] = [1,2,3]
+// let c : Array<number> = []
+// =====================
+
+// tuples
+
+let f: [number, string];
+let g: [number, [number, string]];
+
+f = [2, "str"];
+g = [4, [2, "str"]];
+
+
+// ===============================
+
+
+//Enum  --- Qayta hisoblash
+
+enum Gender {
+    Male,
+    Female
+}
+
+console.log(Gender.Female, Gender.Male); // Bu 0 ga va 1ga teng
+
+enum G {
+    A,
+    B=10,
+    C,
+}
+
+
+console.log(G.A, G.B, G.C); /// G.A == 0, G.B ==10, G.C == 11 ga teng boladi
+
+
+enum D {
+    A,
+    A2,
+    B=10,
+    C,
+}
+
+
+console.log(D.A, D.A2, D.B, D.C); /// D.A == 0, D.A2 == 1, D.B ==10, D.C == 11 ga teng boladi
+
+
+enum H {
+    A = "Hello",
+    B= "TypeScript"
+}
+
+console.log(H.A, H.B);
+
