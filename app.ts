@@ -186,16 +186,74 @@
 
 // }
 
-class Person implements IPerson {
+// class Person implements IPerson {
+//   _name: string = "";
+//   _age: number = 0;
+//   seyHello(): string {
+//     return "dasdad";
+//   }
+
+//   constructor(name: string, age: number) {
+//     this._name = name;
+//     this._age = age;
+//   }
+// }
+
+// class Student extends Person {
+//   _group: string = "";
+//   _course: number = 0;
+
+//   constructor(name: string, age: number, group: string, course: number) {
+//     super(name, age);
+//     this._group = group;
+//     this._course = course;
+//   }
+// }
+
+// const Hoji: Person = new Person("Hojiakbar", 27);
+// console.log(Hoji);
+
+// const Rasul: Student = new Student("Rasul", 57, "5guruh", 2);
+// console.log(Rasul);
+
+// class Teacher extends Person {
+//   disciplines: string[] = [];
+
+//   constructor(name: string, age: number, disciplines: string[]) {
+//     super(name, age);
+//     this.disciplines = disciplines;
+//   }
+// }
+
+// const SSS: Teacher = new Teacher("SSS", 34, ["React", "JS"]);
+
+// console.log(SSS);
+
+// // ==========================================================================
+
+// //type & interfaces
+
+// interface IPerson {
+//   _name: string;
+//   _age: number;
+//   seyHello(): string;
+// }
+
+// ================================================
+
+class Person {
   _name: string = "";
+// private _name: string = "";
+//protected  _name: string = ""; objectlarda namedan foydalana olmaymiz
   _age: number = 0;
-  seyHello(): string {
-    return "dasdad";
-  }
 
   constructor(name: string, age: number) {
     this._name = name;
     this._age = age;
+  }
+
+  sayHello(): string {
+    return `Salom ismim ${this._name}`;
   }
 }
 
@@ -208,35 +266,19 @@ class Student extends Person {
     this._group = group;
     this._course = course;
   }
-}
 
-const Hoji: Person = new Person("Hojiakbar", 27);
-console.log(Hoji);
-
-const Rasul: Student = new Student("Rasul", 57, "5guruh", 2);
-console.log(Rasul);
-
-class Teacher extends Person {
-  disciplines: string[] = [];
-
-  constructor(name: string, age: number, disciplines: string[]) {
-    super(name, age);
-    this.disciplines = disciplines;
+  info(): string {
+    return `
+        Ism: ${this._name}
+        Yosh: ${this._age}
+        Kurs: ${this._course}
+        Guruh: ${this._group}
+        `;
   }
 }
 
-const SSS: Teacher = new Teacher("SSS", 34, ["React", "JS"]);
+const Hojiakbar: Person = new Person("Hojiakbar", 27);
+console.log(Hojiakbar);
 
-console.log(SSS);
-
-// ==========================================================================
-
-//type & interfaces
-
-interface IPerson {
-  _name: string;
-  _age: number;
-  seyHello(): string;
-}
-
-
+const Saidakbar: Student = new Student("Saidakbar", 23, "5-guruh", 4);
+console.log(Saidakbar);
