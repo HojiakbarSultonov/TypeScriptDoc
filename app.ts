@@ -121,67 +121,122 @@
 
 //Class
 
-class Person {
-  _name: string = "Hojiakbar";
-  _age: number = 23;
+// class Person {
+//   _name: string = "Hojiakbar";
+//   _age: number = 23;
 
-  //constructor faqat 1marta foydalaniladi!!!
+//   //constructor faqat 1marta foydalaniladi!!!
+
+//   constructor(name: string, age: number) {
+//     this._name = name;
+//     this._age = age;
+//   }
+
+//   //method
+//   // info():string {
+//   //     return `${this._name} - ${this._age}da `
+//   // }
+
+//   //2-methodga parametr berish
+
+//   info(value: number): string {
+//     return `${this._name} - ${this._age + value}da `;
+//   }
+
+//   // static bu classga yani Person orqali ishlatilinadi. Masalan: Person.isFlaying
+
+//   static isFlaying = false;
+//   static description() {
+//     return "Bu class Person haqida";
+//   }
+
+//   // getter va setter methodi
+
+//   get name(): string {
+//     return this._name;
+//   }
+
+//   set name(value: string) {
+//     this._name = value;
+//   }
+
+//   get age(): number {
+//     return this._age;
+//   }
+
+//   set age(value: number) {
+//     if (value > 0 && value < 100) {
+//       this._age = value;
+//     }else throw new Error('Siz notori yosh kiritdingiz')
+//   }
+// }
+
+// const Hojiakbar: Person = new Person("Hojiakbar", 27);
+// const Rasul: Person = new Person("Rasul", 57);
+
+// // console.log(Hojiakbar.info(2)); //2chi methodni ishlatish
+// // console.log(Rasul);
+// // console.log(Person.description());
+
+// if(Hojiakbar instanceof Person){
+//     console.log('tegishli');
+
+// }else {
+//     console.log('tegishli emas');
+
+// }
+
+class Person implements IPerson {
+  _name: string = "";
+  _age: number = 0;
+  seyHello(): string {
+    return "dasdad";
+  }
 
   constructor(name: string, age: number) {
     this._name = name;
     this._age = age;
   }
+}
 
-  //method
-  // info():string {
-  //     return `${this._name} - ${this._age}da `
-  // }
+class Student extends Person {
+  _group: string = "";
+  _course: number = 0;
 
-  //2-methodga parametr berish
-
-  info(value: number): string {
-    return `${this._name} - ${this._age + value}da `;
-  }
-
-  // static bu classga yani Person orqali ishlatilinadi. Masalan: Person.isFlaying
-
-  static isFlaying = false;
-  static description() {
-    return "Bu class Person haqida";
-  }
-
-  // getter va setter methodi
-
-  get name(): string {
-    return this._name;
-  }
-
-  set name(value: string) {
-    this._name = value;
-  }
-
-  get age(): number {
-    return this._age;
-  }
-
-  set age(value: number) {
-    if (value > 0 && value < 100) {
-      this._age = value;
-    }else throw new Error('Siz notori yosh kiritdingiz')
+  constructor(name: string, age: number, group: string, course: number) {
+    super(name, age);
+    this._group = group;
+    this._course = course;
   }
 }
 
-const Hojiakbar: Person = new Person("Hojiakbar", 27);
-const Rasul: Person = new Person("Rasul", 57);
+const Hoji: Person = new Person("Hojiakbar", 27);
+console.log(Hoji);
 
-// console.log(Hojiakbar.info(2)); //2chi methodni ishlatish
-// console.log(Rasul);
-// console.log(Person.description());
+const Rasul: Student = new Student("Rasul", 57, "5guruh", 2);
+console.log(Rasul);
 
-if(Hojiakbar instanceof Person){
-    console.log('tegishli');
-    
-}else {
-    console.log('tegishli emas');
-    
+class Teacher extends Person {
+  disciplines: string[] = [];
+
+  constructor(name: string, age: number, disciplines: string[]) {
+    super(name, age);
+    this.disciplines = disciplines;
+  }
 }
+
+const SSS: Teacher = new Teacher("SSS", 34, ["React", "JS"]);
+
+console.log(SSS);
+
+// ==========================================================================
+
+//type & interfaces
+
+interface IPerson {
+  _name: string;
+  _age: number;
+  seyHello(): string;
+}
+
+
